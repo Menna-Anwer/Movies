@@ -1,0 +1,30 @@
+<div class="container  mt-5 p-5">
+    <form [formGroup]="searchForm" (ngSubmit)="submitForm()">
+        <div class="row justify-content-end">
+            <div class="mb-3 col-lg-7">
+                <input type="text" class="form-control mx-auto "  formControlName="movieName" placeholder="Serch Movie Here ...">
+              </div>
+
+              <div class="col-lg-4">
+                <button class="btn btn-md">Serch</button>
+              </div>
+        </div>
+
+    </form>
+
+
+    <div class="container">
+        <div class="row mt-2 ">
+            <div class="col-lg-3 mt-5" *ngFor="let s of searchResult"  mx-auto>
+                <mat-card class="example-card" [routerLink]="['/moviedetailes',s.id]">
+                    <img mat-card-image [src]='imgSrc+s.poster_path' alt="...">
+                    <div class="bg-dark position-absolute top-0 end-0 text-white p-2">{{s.vote_average}}</div>
+                    <mat-card-content>
+                        <p class="text-secondary pt-2">{{s.release_date}}</p>
+                        <h1 class="text-white mt-3">{{s.original_title}}</h1>
+                        <p>{{ s.overview|seeMore:10}} ...</p>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+</div>

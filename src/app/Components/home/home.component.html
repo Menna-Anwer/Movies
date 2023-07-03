@@ -1,0 +1,40 @@
+<div class="container">
+  <hr />
+  <div class="row mt-2 ">
+    <div class="col-lg-3 mt-5" *ngFor="let movie of trendingMovies" mx-auto>
+      <mat-card class="example-card" [routerLink]="['/moviedetailes',movie.id]">
+        <img mat-card-image [src]='imgSrc+movie.poster_path' alt="...">
+        <div class="bg-dark position-absolute top-0 end-0 text-white p-2">{{movie.vote_average}}</div>
+        <mat-card-content>
+          <p class="text-secondary pt-2">{{movie.release_date}}</p>
+          <h1 class="text-white mt-3">{{movie.original_title}}</h1>
+          <p>{{ movie.overview|seeMore:10}} ...</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  <div class="btn-contain">
+    <button mat-button class="seeMore-btn" routerLink="/movies" type="submit">
+      See More
+    </button>
+  </div>
+
+  <hr />
+  <div class="row mt-2">
+    <div class="col-lg-3 mt-5" *ngFor="let tv of trendingTV" mx-auto>
+      <mat-card class="example-card" [routerLink]="['/tvdetailes',tv.id]">
+        <img mat-card-image [src]='imgSrc+tv.poster_path' alt="...">
+        <div class="bg-dark position-absolute top-0 end-0 text-white p-2">{{tv.vote_average}}</div>
+        <mat-card-content>
+          <h1 class="text-white mt-3">{{tv.original_title}}</h1>
+          <p>{{ tv.overview|seeMore:10}} ...</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  <div class="btn-contain">
+    <button mat-button class="seeMore-btn" routerLink="/tv" type="submit">
+      See More
+    </button>
+  </div>
+</div>
